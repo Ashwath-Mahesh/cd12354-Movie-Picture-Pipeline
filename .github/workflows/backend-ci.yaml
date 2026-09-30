@@ -26,7 +26,7 @@ jobs:
           key: ${{ runner.os }}-pipenv-${{ hashFiles('starter/backend/Pipfile.lock') }}
       - run: pip install pipenv
       - run: pipenv install --dev
-      - run: pipenv run lint-fail
+      - run: pipenv run lint
 
   test:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
           key: ${{ runner.os }}-pipenv-${{ hashFiles('starter/backend/Pipfile.lock') }}
       - run: pip install pipenv
       - run: pipenv install --dev
-      - run: FAIL_TEST=true pipenv run test
+      - run: pipenv run test
 
   build:
     needs: [lint, test]
